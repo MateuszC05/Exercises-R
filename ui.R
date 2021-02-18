@@ -1,0 +1,63 @@
+shinyUI(fluidPage(
+  titlePanel("Exercise"),
+  
+  fluidRow(
+    column(4,
+           selectInput("SEX",
+                       "Sex:",
+                       c("All",
+                         unique(as.character(DF$SEX))))
+    ),
+    column(4,
+           selectInput("RACE",
+                       "Race:",
+                       c("All",
+                         unique(as.character(DF$RACE))))
+    ),
+    column(4,
+           selectInput("AGE",
+                       "Age:",
+                       c("All",
+                         unique(as.character(sort(DF$AGE))))
+           )
+    ),
+    column(4,
+           selectInput("BMRKR2",
+                       "Biomarker2:",
+                       c("All",
+                         unique(as.character(DF$BMRKR2))))
+    ),
+    
+    column(4,
+           selectInput("LBTESTCD",
+                       "LBTESTCD:",
+                       c("All",
+                         unique(as.character(DF$LBTESTCD))))
+           ),
+    column(4,
+           selectInput("LBCAT",
+                        "LBCAT:",
+                        c('All',
+                          unique(as.character(DF$LBCAT))))
+           ),
+    column(4,
+           selectInput("ACTARM",
+                       "ACTARM:",
+                       c('All',
+                         unique(as.character(DF$ACTARM))))
+    ),
+    column(4,
+           selectInput("ACATARMCD",
+                       "ACATARMCD:",
+                       c('All',
+                         unique(as.character(DF$ACTARMCD))))
+    ),
+    
+    DT::dataTableOutput("table"),
+    
+    mainPanel(
+      plotOutput('trend'),
+      plotOutput("plot2")
+    )
+    
+)))
